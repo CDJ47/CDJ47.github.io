@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title>Partenaires de la citoyenneté inscrits dans les établissements participants au CDJ 2021-2022</title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/EPCI_1.js"></script>
+        <script src="data/DEPARTEMENT_2.js"></script>
+        <script src="data/Etablissementcouvertparlepartenaire_3.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[43.90559239417697,-0.5654836280610726],[44.86397209769475,1.8432347448295505]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_OSMStandard_0');
+        map.getPane('pane_OSMStandard_0').style.zIndex = 400;
+        var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OSMStandard_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OSMStandard_0;
+        map.addLayer(layer_OSMStandard_0);
+        function pop_EPCI_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM_EPCI'] !== null ? autolinker.link(feature.properties['NOM_EPCI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_EPCI_1_0() {
+            return {
+                pane: 'pane_EPCI_1',
+                opacity: 1,
+                color: 'rgba(134,134,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(140,150,150,0.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_EPCI_1');
+        map.getPane('pane_EPCI_1').style.zIndex = 401;
+        map.getPane('pane_EPCI_1').style['mix-blend-mode'] = 'normal';
+        var layer_EPCI_1 = new L.geoJson(json_EPCI_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_EPCI_1',
+            layerName: 'layer_EPCI_1',
+            pane: 'pane_EPCI_1',
+            onEachFeature: pop_EPCI_1,
+            style: style_EPCI_1_0,
+        });
+        bounds_group.addLayer(layer_EPCI_1);
+        map.addLayer(layer_EPCI_1);
+        function pop_DEPARTEMENT_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM_DEP_M'] !== null ? autolinker.link(feature.properties['NOM_DEP_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM_DEP'] !== null ? autolinker.link(feature.properties['NOM_DEP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INSEE_DEP'] !== null ? autolinker.link(feature.properties['INSEE_DEP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INSEE_REG'] !== null ? autolinker.link(feature.properties['INSEE_REG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Selection'] !== null ? autolinker.link(feature.properties['Selection'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_DEPARTEMENT_2_0(feature) {
+            switch(String(feature.properties['Selection'])) {
+                case 'Oui':
+                    return {
+                pane: 'pane_DEPARTEMENT_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '1,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(140,150,150,0.396078431372549)',
+                interactive: false,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_DEPARTEMENT_2');
+        map.getPane('pane_DEPARTEMENT_2').style.zIndex = 402;
+        map.getPane('pane_DEPARTEMENT_2').style['mix-blend-mode'] = 'normal';
+        var layer_DEPARTEMENT_2 = new L.geoJson(json_DEPARTEMENT_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_DEPARTEMENT_2',
+            layerName: 'layer_DEPARTEMENT_2',
+            pane: 'pane_DEPARTEMENT_2',
+            onEachFeature: pop_DEPARTEMENT_2,
+            style: style_DEPARTEMENT_2_0,
+        });
+        bounds_group.addLayer(layer_DEPARTEMENT_2);
+        map.addLayer(layer_DEPARTEMENT_2);
+        function pop_Etablissementcouvertparlepartenaire_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Nom établissement</strong><br />' + (feature.properties['GRAPHIE'] !== null ? autolinker.link(feature.properties['GRAPHIE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Partenaire</strong><br />' + (feature.properties['Partenaire'] !== null ? autolinker.link(feature.properties['Partenaire'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Commune</strong><br />' + (feature.properties['Commune'] !== null ? autolinker.link(feature.properties['Commune'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Date de la première intervention</strong><br />' + (feature.properties['1ere inter'] !== null ? autolinker.link(feature.properties['1ere inter'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Date de la deuxième intervention</strong><br />' + (feature.properties['2e interv'] !== null ? autolinker.link(feature.properties['2e interv'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Date de la troisième intervention</strong><br />' + (feature.properties['3e interv'] !== null ? autolinker.link(feature.properties['3e interv'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Etablissementcouvertparlepartenaire_3_0(feature) {
+            switch(String(feature.properties['Partenaire'])) {
+                case 'Francas':
+                    return {
+                pane: 'pane_Etablissementcouvertparlepartenaire_3',
+                shape: 'diamond',
+                radius: 8.8,
+                opacity: 1,
+                color: 'rgba(50,87,128,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(223,0,3,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IFAC':
+                    return {
+                pane: 'pane_Etablissementcouvertparlepartenaire_3',
+                shape: 'diamond',
+                radius: 8.8,
+                opacity: 1,
+                color: 'rgba(50,87,128,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,231,228,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ligue':
+                    return {
+                pane: 'pane_Etablissementcouvertparlepartenaire_3',
+                shape: 'diamond',
+                radius: 8.8,
+                opacity: 1,
+                color: 'rgba(50,87,128,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(3,0,228,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Maison de l\'Europe':
+                    return {
+                pane: 'pane_Etablissementcouvertparlepartenaire_3',
+                shape: 'diamond',
+                radius: 8.8,
+                opacity: 1,
+                color: 'rgba(50,87,128,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(28,210,0,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Etablissementcouvertparlepartenaire_3');
+        map.getPane('pane_Etablissementcouvertparlepartenaire_3').style.zIndex = 403;
+        map.getPane('pane_Etablissementcouvertparlepartenaire_3').style['mix-blend-mode'] = 'normal';
+        var layer_Etablissementcouvertparlepartenaire_3 = new L.geoJson(json_Etablissementcouvertparlepartenaire_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Etablissementcouvertparlepartenaire_3',
+            layerName: 'layer_Etablissementcouvertparlepartenaire_3',
+            pane: 'pane_Etablissementcouvertparlepartenaire_3',
+            onEachFeature: pop_Etablissementcouvertparlepartenaire_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Etablissementcouvertparlepartenaire_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Etablissementcouvertparlepartenaire_3);
+        map.addLayer(layer_Etablissementcouvertparlepartenaire_3);
+            var title = new L.Control();
+            title.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            title.update = function () {
+                this._div.innerHTML = '<h2>Partenaires de la citoyenneté inscrits dans les établissements participants au CDJ 2021-2022</h2>';
+            };
+            title.addTo(map);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Etablissements couverts par les partenaires :<br /><table><tr><td style="text-align: center;"><img src="legend/Etablissementcouvertparlepartenaire_3_Francas0.png" /></td><td>Francas</td></tr><tr><td style="text-align: center;"><img src="legend/Etablissementcouvertparlepartenaire_3_IFAC1.png" /></td><td>IFAC</td></tr><tr><td style="text-align: center;"><img src="legend/Etablissementcouvertparlepartenaire_3_Ligue2.png" /></td><td>Ligue</td></tr><tr><td style="text-align: center;"><img src="legend/Etablissementcouvertparlepartenaire_3_MaisondelEurope3.png" /></td><td>Maison de l\'Europe</td></tr></table>': layer_Etablissementcouvertparlepartenaire_3,},{collapsed:true}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
