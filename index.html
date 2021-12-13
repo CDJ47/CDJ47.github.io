@@ -39,7 +39,7 @@
             zoomControl:true, maxZoom:28, minZoom:1
         }).fitBounds([[43.90559239417697,-0.5654836280610726],[44.86397209769475,1.8432347448295505]]);
         var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://lotetgaronne.fr" >Carte proposée par le service vie associative et citoyenneté</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="cdj@lotetgaronne.fr">Contacter le CDJ 47</a>');
+        map.attributionControl.setPrefix('<a href="https://lotetgaronne.fr" >Carte proposée par le service vie associative et citoyenneté</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> <a href="cdj@lotetgaronne.fr">Contacter le CDJ 47</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
         var bounds_group = new L.featureGroup([]);
