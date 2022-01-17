@@ -79,7 +79,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(140,150,150,0.0)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_EPCI_1');
@@ -87,7 +87,7 @@
         map.getPane('pane_EPCI_1').style['mix-blend-mode'] = 'normal';
         var layer_EPCI_1 = new L.geoJson(json_EPCI_1, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_EPCI_1',
             layerName: 'layer_EPCI_1',
             pane: 'pane_EPCI_1',
