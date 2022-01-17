@@ -3,7 +3,7 @@ var json_Etablissementcouvertparlepartenaire_3 = {
 "name": "Etablissementcouvertparlepartenaire_3",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
-{ "type": "Feature", "properties": { "GRAPHIE": "collège saint-pierre", "Partenaire": "Maison de l'Europe", "Commune": "Casseneuil", "1ere inter": "2022-02-01", "2e interv": "2022-03-17", "3e interv": "2022-05-03" }, "geometry": { "type": "Point", "coordinates": [ 0.621698457456865, 44.446157918198566 ] } },
+{ "type": "Feature", "properties": { "GRAPHIE": "collège saint-pierre", "Partenaire": "Maison de l'Europe", "Commune": "Casseneuil", "1ere inter": "01-02-2022", "2e interv": "17-03-2022", "3e interv": "03-05-2022" }, "geometry": { "type": "Point", "coordinates": [ 0.621698457456865, 44.446157918198566 ] } },
 { "type": "Feature", "properties": { "GRAPHIE": "collège jean monnet", "Partenaire": "Francas", "Commune": "Fumel", "1ere inter": null, "2e interv": null, "3e interv": null }, "geometry": { "type": "Point", "coordinates": [ 0.959487776381583, 44.498709062324004 ] } },
 { "type": "Feature", "properties": { "GRAPHIE": "collège notre-dame de la salle", "Partenaire": "IFAC", "Commune": "Marmande", "1ere inter": null, "2e interv": null, "3e interv": null }, "geometry": { "type": "Point", "coordinates": [ 0.168347303726228, 44.496111192492471 ] } },
 { "type": "Feature", "properties": { "GRAPHIE": "collège sainte-catherine", "Partenaire": "IFAC", "Commune": "Villeneuve sur Lot", "1ere inter": null, "2e interv": null, "3e interv": null }, "geometry": { "type": "Point", "coordinates": [ 0.715812081126244, 44.403517900114998 ] } },
