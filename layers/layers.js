@@ -8,7 +8,7 @@ var wms_layers = [];
             
             
             source: new ol.source.XYZ({
-    attributions: ' &middot; <a href="https://www.lotetgaronne.fr/accueil">Département de Lot-et-Garonne, Service vie citoyenne et associative, 2021</a> &middot; <a href="mailto:cdj@lotetgaronne.fr">Contacter le CDJ 47 · </a>',
+    attributions: ' &middot; <a href="https://www.lotetgaronne.fr/accueil">Département de Lot-et-Garonne, Service vie citoyenne et associative, 2021</a> &middot; <a href="mailto:cdj@lotetgaronne.fr">Contacter le CDJ 47</a>',
                 url: 'http://tile.openstreetmap.org/{z}/{x}/{y}.png'
             })
         });
